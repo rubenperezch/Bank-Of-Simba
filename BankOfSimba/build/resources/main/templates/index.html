@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank Accounts</title>
+    <meta charset="utf-8" />
+    <link rel = "stylesheet" th:href = "@{/styles.css}">
+</head>
+<body>
+<div>
+    <div th:each="account : ${accounts}">
+        <h1
+                th:text="${account.name} + ' - ' +${account.balance} + ' Zebra (' + ${account.animalType} + ') '"
+        ></h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Animal</th>
+            </tr>
+            <tr th:object="${accounts}">
+                <td th:text="*{name}"></td>
+                <td th:text="*{#numbers.formatDecimal(balance,0,2)}+' Zebra'"></td>
+                <td th:text="*{animalType}"></td>
+            </tr>
+            <h2 th:text="${phrase}">Phrase</h2>
+            <h3 th:utext="${phrase}">Phrase</h3>
+        </table>
+    </div>
+</div>
+</body>
+</html>

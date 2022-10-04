@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add</title>
+    <meta charset="utf-8" />
+    <link rel = "stylesheet" th:href = "@{/styles.css}">
+</head>
+<body>
+<form th:action = "@{/addAccount}" action = "/addAccount" method = "post" th:object = "${account}">
+    <div class = "input-field">
+        <label for = "name">Name</label>
+        <input type="text" id = "name" name = "name" th:field = "*{name}">
+    </div>
+    <div class = "input-field">
+        <label for = "balance">Balance</label>
+        <input type="text" id = "balance" name = "balance" th:field = "*{balance}">
+    </div>
+    <div class = "input-field">
+        <label for = "animalType">Animal Type</label>
+        <input type="text" id = "animalType" name = "animalType" th:field = "*{animalType}">
+    </div>
+    <div class = "input-field">
+        <label for = "isKing">is King</label>
+        <input type="text" id = "isKing" name = "isKing" th:field = "*{isKing}">
+    </div>
+    <div class = "input-field">
+        <label for = "isGood">is Good</label>
+        <input type="text" id = "isGood" name = "isGood" th:field = "*{isGood}">
+    </div>
+    <div class = "input-field">
+        <input type = "submit" value = "Add" name = "submit">
+    </div>
+</form>
+</body>
+</html>

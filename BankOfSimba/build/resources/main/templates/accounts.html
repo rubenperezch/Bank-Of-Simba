@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bank Accounts</title>
+  <meta charset="utf-8" />
+  <link rel = "stylesheet" th:href = "@{/styles.css}">
+</head>
+<body>
+<div>
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Animal</th>
+        <th>King</th>
+        <th>Alignment</th>
+      </tr>
+      <tr th:each="account, iter : ${accounts}">
+        <td>
+          <span th:if="${account.getKing()}" style="color: red;" th:text = "${iter.index}"></span>
+          <span th:unless="${account.getKing()}" th:text = "${iter.index}"></span>
+        </td>
+        <td>
+          <span th:if="${account.getKing()}" style="color: red;" th:text = "${account.getName()}"></span>
+          <span th:unless="${account.getKing()}" th:text = "${account.getName()}"></span>
+        </td>
+        <td>
+          <span th:if="${account.getKing()}" style="color: red;" th:text = "${account.getBalance()}"></span>
+          <span th:unless="${account.getKing()}" th:text = "${account.getBalance()}"></span>
+        </td>
+        <td>
+          <span th:if="${account.getKing()}" style="color: red;" th:text = "${account.getAnimalType()}"></span>
+          <span th:unless="${account.getKing()}" th:text = "${account.getAnimalType()}"></span>
+        </td>
+        <td>
+          <span th:if="${account.getKing()}" style="color: red;" th:text = "${account.getKing()}"></span>
+          <span th:unless="${account.getKing()}" th:text = "${account.getKing()}"></span>
+        </td>
+        <td th:switch="${account.getGood()}">
+          <span th:case="true">Good Guy</span>
+          <span th:case="false">Bad Guy</span>
+          <div th:case="*">
+            <div th:each="good:${account.getGood()}" th:text="${good}"/>
+          </div>
+        </td>
+      </tr>
+      <h2 th:text="${phrase}">Phrase</h2>
+      <h3 th:utext="${phrase}">Phrase</h3>
+    </table>
+</div>
+</body>
+</html>
